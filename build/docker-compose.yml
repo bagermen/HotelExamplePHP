@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+    db:
+        image: mysql:5.7
+        container_name: 'test_mysql'
+        networks:
+           net:
+        volumes:
+            - "./mysql:/var/lib/mysql"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: test
+            MYSQL_USER: test
+            MYSQL_PASSWORD: test
+    php:
+        build:
+            context: ./containers/php-fpm
+            args:
+                TIMEZONE: "Europe/Moscow"
+        container_name: 'test_php'
+        environment:
+            XDEBUG_CONFIG: "idekey=PHPSTORM remote_host=192.168.0.6"
+        networks:
+            net:
+        volumes:
+            - ..:/var/www/symfony
+    nginx:
+        build: ./containers/nginx
+        container_name: 'test_nginx'
+        networks:
+            net:
+        ports:
+            - 8090:80
+        depends_on:
+            - "php"
+        volumes:
+            - ..:/var/www/symfony
+            - ./logs/nginx/:/var/log/nginx
+networks:
+    net:

@@ -1,0 +1,7 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+rest_passbook:
+  type : rest
+  resource: "@AppBundle/Resources/config/api/routing_rest.yml"

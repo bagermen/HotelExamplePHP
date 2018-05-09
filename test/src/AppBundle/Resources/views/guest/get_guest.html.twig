@@ -1,0 +1,15 @@
+{% extends '@App/layout.html.twig' %}
+{% block menu %}
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('api_secured_user_get_users') }}">Guests</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="{{ url('api_secured_guest_get_guest') }}">CheckIn</a>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block body %}
+    {{ show_data }}
+{%  endblock %}

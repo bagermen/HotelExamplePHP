@@ -29,7 +29,7 @@ security:
             form_login:
                 login_path: login
                 check_path: login
-                default_target_path: api_secured_get_users
+                default_target_path: api_secured_user_get_users
             logout:
                 path:   logout
                 target: homepage

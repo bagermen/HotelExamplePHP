@@ -7,21 +7,19 @@ use FOS\RestBundle\Controller\Annotations;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Class UserController
+ * Class GuestController
  * @package AppBundle\Controller
  */
-class UserController extends FOSRestController
+class GuestController extends FOSRestController
 {
     /**
-     * Users list
-     *
+     * Check in
      * @Annotations\View
      * @return \FOS\RestBundle\View\View
      */
-    public function getUsersAction()
+    public function getGuestAction()
     {
-        /** @var  $userlists */
-        $userlists = $this->get('core.userlist');
-        return $this->view(['users' => $userlists->fetchUsers()], Response::HTTP_OK);
+
+        return $this->view(['show_data' => 'ssss'], Response::HTTP_OK);
     }
 }

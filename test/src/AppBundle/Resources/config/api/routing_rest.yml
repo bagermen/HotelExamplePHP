@@ -1,5 +1,11 @@
-passbook_api_apple_rest:
+api_users:
     type: rest
     prefix: /secured
     resource: "AppBundle:User"
-    name_prefix: api_secured_
+    name_prefix: api_secured_user_
+
+api_guests:
+    type: rest
+    prefix: /secured
+    resource: "AppBundle:Guest"
+    name_prefix: api_secured_guest_

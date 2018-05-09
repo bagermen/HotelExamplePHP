@@ -1,3 +1,37 @@
-{% extends './base.secured.html.twig' %}
+{% extends '@App/layout.html.twig' %}
+{% block menu %}
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link active" href="{{ url('api_secured_user_get_users') }}">Guests</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('api_secured_guest_get_guest') }}">CheckIn</a>
+        </li>
+    </ul>
+{% endblock %}
 
-{% block content %}3333{%  endblock %}
+{% block body %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">reservation</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for guest in users %}
+            <tr>
+                <th scope="row">{{ guest.getId() }}</th>
+                <td>{{ guest.getName() }}</td>
+                <td>{{ guest.getSurname() }}</td>
+                <td>{{ guest.getAge() }}</td>
+                <td>{{ guest.getReservation() }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{%  endblock %}
